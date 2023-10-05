@@ -20,3 +20,6 @@
           {{- include "django-demo.db.env" . | nindent 10 }}
     ```
 
+
+  > TIP: Always dry-run to check for syntax errors
+

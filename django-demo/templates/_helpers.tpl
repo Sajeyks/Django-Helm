@@ -80,7 +80,7 @@ Create the name of the service account to use
 - name: POSTGRES_PASSWORD
   valueFrom:
     secretKeyRef: 
-      name: django-demo-postgresql   // name of service
-      key: postgres-password         // secret
+      name: django-demo-postgresql 
+      key: postgresql-password 
 
 {{- end }}
