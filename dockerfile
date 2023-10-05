@@ -2,7 +2,7 @@
 FROM python:3.10.2-slim-bullseye
 
 # Install make command
-RUN apt-get update && apt-get install -y make
+# RUN apt-get update && apt-get install -y make
 
 # Set environment variables
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
@@ -14,7 +14,7 @@ WORKDIR /code
 
 # Install dependencies
 COPY ./requirements.txt .
-COPY Makefile ./Makefile
+# COPY Makefile ./Makefile
 
 EXPOSE 8000
 
