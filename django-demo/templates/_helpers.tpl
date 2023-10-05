@@ -81,6 +81,6 @@ Create the name of the service account to use
   valueFrom:
     secretKeyRef: 
       name: django-demo-postgresql 
-      key: postgresql-password 
+      key: postgres-password 
 
 {{- end }}
