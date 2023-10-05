@@ -60,3 +60,27 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+
+// Create env variables for my website to use for PostgreSQL connection
+
+
+{{- define "django-demo.db.env" -}}
+
+- name: POSTGRES_HOST
+  value: django-demo-postgresql  // name of service
+
+- name: POSTGRES_DB
+  value: {{ .Values.postgresql.postgresqlDatabase }} // from values.yaml
+
+- name: POSTGRES_USER
+  value: {{ .Values.postgresql.postgresqlUsername}}  // from values.yaml
+
+- name: POSTGRES_PASSWORD
+  valueFrom:
+    secretKeyRef: 
+      name: django-demo-postgresql   // name of service
+      key: postgres-password         // secret
+
+{{- end }}
