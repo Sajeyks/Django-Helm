@@ -82,3 +82,9 @@ tolerations: []
 
 affinity: {}
 
+
+# mine
+postgresql: 
+  enabled: true
+  postgresqlUsername: postgres
+  postgresqlDatabase: postgres
