@@ -69,13 +69,13 @@ Create the name of the service account to use
 {{- define "django-demo.db.env" -}}
 
 - name: POSTGRES_HOST
-  value: django-demo-postgresql  // name of service
+  value: django-demo-postgresql
 
 - name: POSTGRES_DB
-  value: {{ .Values.postgresql.postgresqlDatabase }} // from values.yaml
+  value: {{ .Values.postgresql.postgresqlDatabase }}
 
 - name: POSTGRES_USER
-  value: {{ .Values.postgresql.postgresqlUsername}}  // from values.yaml
+  value: {{ .Values.postgresql.postgresqlUsername}}
 
 - name: POSTGRES_PASSWORD
   valueFrom:
