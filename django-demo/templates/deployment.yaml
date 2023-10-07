@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"] 
           env:
-          {{- include "django-demo.db.env" . | nindent 10 }} # The helper name in the brackets
+          {{- include "django-demo.db.env" . | nindent 10 }}
           ports:
             - name: http
               containerPort: 8000
