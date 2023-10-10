@@ -23,3 +23,12 @@
 
   > TIP: Always dry-run to check for syntax errors
 
+# Deploying the charts:
+- Create namespaces
+- Move to directory containing namespaces
+- Run:  `kubectl create namespace tenant1`
+        `helm install tenant1-django-app ./django-app --namespace tenant1 -f ./tenant1-values.yaml`
+                                       &
+        `helm install tenant1-postgres-db ./postgres-db --namespace tenant1 -f ./tenant1-values.yaml`
+
+                > for tenant 1 : and the  `-f ./tenant1-values.yaml` is optional
