@@ -1,5 +1,0 @@
-dependencies:
-    - name: postgresql
-      version: 13.1.0
-      repository: "@bitnami" # must pull the chart on the machine first
-      condition: "postgresql.enabled"

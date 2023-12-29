@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "django-demo.name" -}}
+{{- define "freeradius.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "django-demo.fullname" -}}
+{{- define "freeradius.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "django-demo.chart" -}}
+{{- define "freeradius.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "django-demo.labels" -}}
-helm.sh/chart: {{ include "django-demo.chart" . }}
-{{ include "django-demo.selectorLabels" . }}
+{{- define "freeradius.labels" -}}
+helm.sh/chart: {{ include "freeradius.chart" . }}
+{{ include "freeradius.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,39 +45,18 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "django-demo.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "django-demo.name" . }}
+{{- define "freeradius.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "freeradius.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "django-demo.serviceAccountName" -}}
+{{- define "freeradius.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "django-demo.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "freeradius.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
-{{- end }}
-
-
-
-{{- define "django-demo.db.env" -}}
-
-- name: POSTGRES_HOST
-  value: {{ .Values.postgresql.postgresqlHost }}
-
-- name: POSTGRES_DB
-  value: {{ .Values.postgresql.postgresqlDatabase }}
-
-- name: POSTGRES_USER
-  value: {{ .Values.postgresql.postgresqlUsername}}
-
-- name: POSTGRES_PASSWORD
-  valueFrom:
-    secretKeyRef: 
-      name: {{ .Values.postgresql.postgresqlHost }}
-      key: postgres-password
-
 {{- end }}
