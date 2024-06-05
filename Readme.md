@@ -1,3 +1,5 @@
+# Practicing the Deployment of a DjangoRest project and a Postgres DB using Helm Charts and Subcharts
+
 - Adding sub-chart:
   - Create a `requirements.yml` inside the main folder of the Django helm chart and add the dependencies:
   - Run `helm dep up` in that folder
